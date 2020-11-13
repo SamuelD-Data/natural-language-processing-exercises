@@ -39,10 +39,10 @@ def get_blog_articles():
     # returning list when all article text added
     return l
 
-    def new_funct(articles):
-        """
-        No argument needed. Retrieves body text and title from 5 different categories of inshorts articles
-        """
+def get_news_articles():
+    """
+    No argument needed. Retrieves body text and title from 5 different categories of inshorts articles
+    """
     # saving articles urls in list
     articles = ['https://inshorts.com/en/read/business','https://inshorts.com/en/read/sports','https://inshorts.com/en/read/technology','https://inshorts.com/en/read/entertainment']
     # creating empty list
