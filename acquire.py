@@ -69,3 +69,36 @@ def get_news_articles():
             l.append(d)
     # returning list
     return l
+
+def get_news_with_categories():
+    """
+    No argument needed. Retrieves body text and title from 5 different categories of inshorts articles. 
+    Adds category column, unlike function above. For use with exploration exercises.
+    """
+    # saving articles urls in list
+    articles = ['https://inshorts.com/en/read/business','https://inshorts.com/en/read/sports','https://inshorts.com/en/read/technology','https://inshorts.com/en/read/entertainment']
+    # creating empty list
+    l = []
+    # iterating through each url
+    for url in articles:
+        # saving response from url page
+        response = get(url)
+        # parsing through response
+        soup = BeautifulSoup(response.text)
+        # finding all news cards within response
+        cards = soup.find_all('div', class_='news-card')
+        # iterating through cards
+        for card in cards:
+            # creating new dictionary
+            d = {}
+            # saving article title and body text
+            title = (card.find('span', itemprop='headline').text)
+            body = (card.find('div', itemprop='articleBody').text)
+            # saving title and body text to dictionary
+            d['title'] = title
+            d['article'] = body
+            d['category'] = url[29:]
+            # adding dictionary to list
+            l.append(d)
+    # returning list
+    return l
